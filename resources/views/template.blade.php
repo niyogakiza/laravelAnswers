@@ -10,7 +10,10 @@
 
     </head>
     <body>
+
        @include('_includes/nav/topnav')
+
        @yield( 'content')
+
     </body>
 </html>

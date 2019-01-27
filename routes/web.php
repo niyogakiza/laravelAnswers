@@ -10,11 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+Route::get('/', function() {
     return view('welcome');
 })->name('index');
-Route::get('/about', 'PageController@about')->name('about');
-Route::get('/contact', 'PageController@contact')->name('contact');
-Route::get('/create', 'QuestionController@create')->name('create');
 Route::resource('questions', 'QuestionController');
+Route::resource('answers', 'AnswersController', ['except' => ['index', 'create', 'show']]);
+Route::get('/about', 'QuestionsController@about')->name('about');

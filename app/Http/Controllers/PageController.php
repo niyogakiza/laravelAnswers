@@ -9,12 +9,12 @@ namespace App\Http\Controllers;
 
 class PageController extends Controller
 {
-  public function about()
+  public function show()
   {
-    return "About Us Page";
+      return view('answers.store');
   }
-  public function contact()
+  public function index()
   {
-    return "Contact Page";
+      return view('questions.create');
   }
 }
