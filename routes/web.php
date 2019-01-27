@@ -16,4 +16,5 @@ Route::get('/', function () {
 })->name('index');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/contact', 'PageController@contact')->name('contact');
+Route::get('/create', 'QuestionController@create')->name('create');
 Route::resource('questions', 'QuestionController');
