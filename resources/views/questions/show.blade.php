@@ -6,7 +6,9 @@
     <p class="lead">
       {{ $question->description }}
     </p>
-
+    <p>
+      {{--Submitted By: {{ $question->user->name }}, {{ $question->created_at->diffForHumans() }}--}}
+    </p>
     <hr />
 
     <!-- display all of the answers for this question -->
@@ -17,6 +19,7 @@
             <p>
               {{ $answer->content }}
             </p>
+            {{--<h6>Answered By {{ $answer->user->name }}, {{ $answer->created_at->diffForHumans() }}</h6>--}}
           </div>
         </div>
       @endforeach
@@ -34,7 +37,9 @@
       {{ csrf_field() }}
 
       <h4>Submit Your Own Answer:</h4>
-      <textarea class="form-control" name="content" rows="4"></textarea>
+      <label>
+        <textarea class="form-control" name="content" rows="4"></textarea>
+      </label>
       <input type="hidden" value="{{ $question->id }}" name="question_id" />
       <button class="btn btn-primary">Submit Answer</button>
     </form>

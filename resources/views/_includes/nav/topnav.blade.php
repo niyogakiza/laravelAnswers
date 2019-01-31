@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -13,10 +13,41 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="{{ route('index') }}">Home</a></li>
-        <li><a href="{{ route('questions.index') }}">Recent</a></li>
-        <li><a href="#">Popular</a></li>
+      <ul class="navbar-nav">
+        <li class="active nav-item"><a href="{{ route('index') }}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ route('questions.index') }}">Recent</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Popular</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <p class="navbar-btn">
+            <a href="{{route('questions.create')}}" class="btn btn-primary">Ask A Question</a>
+          </p>
+        </li>
+        @if (Auth::guest())
+          {{--<li><a href="{{ route('login') }}">Login</a></li>--}}
+          {{--<li><a href="{{ route('register') }}">Register</a></li>--}}
+        @else
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                  Logout
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+                </form>
+              </li>
+            </ul>
+          </li>
+        @endif
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
